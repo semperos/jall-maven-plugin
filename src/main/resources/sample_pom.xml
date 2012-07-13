@@ -12,6 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sampleMainClass>com.semperos.Sample</sampleMainClass>
         <javaSupportDir>${project.build.directory}/src/support/java</javaSupportDir>
         <!-- clojure-maven-plugin expects relative path for sources -->
         <clojureSourceDir>target/src/main/clojure</clojureSourceDir>
@@ -66,7 +67,7 @@
                         <configuration>
                             <tasks>
                                 <property name="runtime_classpath" refid="maven.runtime.classpath"/>
-                                <java classname="com.semperos.Sample" classpath="${runtime_classpath}:target/rubygems" fork="true" />
+                                <java classname="${sampleMainClass}" classpath="${runtime_classpath}:target/rubygems" fork="true" />
                             </tasks>
                         </configuration>
                         <goals>
