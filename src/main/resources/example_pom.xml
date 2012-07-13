@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <exampleMainClass>com.semperos.Example</exampleMainClass>
+        <jrubyMavenPluginsVersion>0.28.4</jrubyMavenPluginsVersion>
         <javaSupportDir>${project.build.directory}/src/support/java</javaSupportDir>
         <!-- clojure-maven-plugin expects relative path for sources -->
         <clojureSourceDir>target/src/main/clojure</clojureSourceDir>
@@ -121,7 +122,7 @@
             <plugin>
                 <groupId>de.saumya.mojo</groupId>
                 <artifactId>gem-maven-plugin</artifactId>
-                <version>0.28.4</version>
+                <version>${jrubyMavenPluginsVersion}</version>
                 <extensions>true</extensions>
                 <executions>
                     <execution>
@@ -137,7 +138,7 @@
             <plugin>
                 <groupId>de.saumya.mojo</groupId>
                 <artifactId>jruby-maven-plugin</artifactId>
-                <version>0.28.4</version>
+                <version>${jrubyMavenPluginsVersion}</version>
                 <executions>
                     <execution>
                         <id>ruby-compile</id>
