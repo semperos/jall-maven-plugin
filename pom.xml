@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.semperos</groupId>
+    <artifactId>jall-maven-plugin</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>JAll Maven Plugin</name>
+    <description>Maven plugin for running the JAll compiler.</description>
+
+    <developers>
+        <developer>
+            <id>semperos</id>
+            <name>Daniel Gregoire</name>
+            <email>daniel.l.gregoire@gmail.com</email>
+            <url>http://techylinguist.com</url>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Eclipse Public License</name>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>mojo-descriptor</id>
+                        <goals>
+                            <goal>descriptor</goal>
+                        </goals>
+                    </execution>
+                    <!-- if you want to generate help goal -->
+                    <execution>
+                        <id>help-goal</id>
+                        <goals>
+                            <goal>helpmojo</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--<plugin>-->
+                <!--<artifactId>maven-invoker-plugin</artifactId>-->
+                <!--<version>1.5</version>-->
+                <!--<configuration>-->
+                    <!--<projectsDirectory>src/it</projectsDirectory>-->
+                    <!--<cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>-->
+                    <!--<pomIncludes>-->
+                        <!--<pomInclude>*/pom.xml</pomInclude>-->
+                    <!--</pomIncludes>-->
+                    <!--<settingsFile>src/it/settings.xml</settingsFile>-->
+                    <!--<localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>-->
+                    <!--<postBuildHookScript>verify.bsh</postBuildHookScript>-->
+                    <!--<debug>true</debug>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>integration-test</id>-->
+                        <!--<goals>-->
+                            <!--<goal>install</goal>-->
+                            <!--<goal>run</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<artifactId>maven-release-plugin</artifactId>-->
+                <!--<version>2.3</version>-->
+                <!--<configuration>-->
+                    <!--<preparationGoals>clean install</preparationGoals>-->
+                    <!--<goals>deploy</goals>-->
+                    <!--<pushChanges>false</pushChanges>-->
+                    <!--<localCheckout>true</localCheckout>-->
+                    <!--<allowTimestampedSnapshots>true</allowTimestampedSnapshots>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- JAll -->
+        <dependency>
+            <groupId>com.semperos</groupId>
+            <artifactId>jall</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Maven/Plugin -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-exec</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-toolchain</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
