@@ -18,11 +18,13 @@
         <!-- clojure-maven-plugin expects relative path for sources -->
         <clojureSourceDir>target/src/main/clojure</clojureSourceDir>
         <rubySourceDir>${project.build.directory}/src/main/ruby</rubySourceDir>
+        <scalaSourceDir>${project.build.directory}/src/main/scala</scalaSourceDir>
         <javaSourceDir>${project.build.directory}/src/main/java</javaSourceDir>
         <javaSupportPhase>generate-sources</javaSupportPhase>
         <clojureCompilePhase>process-sources</clojureCompilePhase>
         <rubyDependencyPhase>initialize</rubyDependencyPhase>
         <rubyCompilePhase>process-sources</rubyCompilePhase>
+        <scalaCompilePhase>process-sources</scalaCompilePhase>
         <javaCompilePhase>compile</javaCompilePhase>
     </properties>
 
@@ -154,6 +156,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile</id>
+                        <phase>${scalaCompilePhase}</phase>
+                        <configuration>
+                            <sourceDir>${scalaSourceDir}</sourceDir>
+                        </configuration>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -168,6 +187,12 @@
             <groupId>org.jruby</groupId>
             <artifactId>jruby-complete</artifactId>
             <version>1.6.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.9.2</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- Dependencies for AJVM code here -->
@@ -186,5 +211,18 @@
             <id>clojars.org</id>
             <url>http://clojars.org/repo</url>
         </repository>
+        <repository>
+            <id>scala-tools.org</id>
+            <name>Scala-tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>scala-tools.org</id>
+            <name>Scala-tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
