@@ -24,10 +24,10 @@ import java.io.InputStreamReader;
  * Print out a sample, working POM to use with a JAll project.
  */
 @Mojo(name = "pom")
-public class SamplePomMojo extends AbstractMojo {
+public class ExamplePomMojo extends AbstractMojo {
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
-        InputStream in = SamplePomMojo.class.getClassLoader().getResourceAsStream("sample_pom.xml");
+        InputStream in = ExamplePomMojo.class.getClassLoader().getResourceAsStream("example_pom.xml");
         BufferedReader rdr = new BufferedReader(new InputStreamReader(in));
         String line = null;
         try {
@@ -40,9 +40,9 @@ public class SamplePomMojo extends AbstractMojo {
         }
         StringBuilder sb = new StringBuilder();
         sb.append("\n");
-        sb.append("This POM assumes a file structure of src/main/jall/com/semperos for your JAll code. ");
-        sb.append("It also assumes you have a Sample class, ");
-        sb.append("which is configured to be run as a main class during the 'mvn test' phase. ");
+        sb.append("This POM assumes a file structure of src/main/jall/com/semperos for your JAll code.\n");
+        sb.append("It also assumes you have a Sample class,\n");
+        sb.append("which is configured to be run as a main class during the 'mvn test' phase.\n");
         sb.append("\n");
         System.out.println(sb.toString());
     }

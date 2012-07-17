@@ -28,6 +28,39 @@
         <javaCompilePhase>compile</javaCompilePhase>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>executable-with-dependencies</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>2.3</version>
+                        <executions>
+                            <execution>
+                                <id>executable-with-dependencies</id>
+                                <phase>package</phase>
+                                <configuration>
+                                    <descriptors>
+                                        <descriptor>assembly.xml</descriptor>
+                                    </descriptors>
+                                    <archive>
+                                        <manifest>
+                                            <mainClass>${exampleMainClass}</mainClass>
+                                        </manifest>
+                                    </archive>
+                                </configuration>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <!-- Compile JAll snippets and auto-generate necessary code -->
